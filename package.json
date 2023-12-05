@@ -1,0 +1,20 @@
+{
+  "name": "expressjs",
+  "version": "1.0.0",
+  "description": "backend application using nodejs + esspressjs + mongodb",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/crhbala/expressjs.git"
+  },
+  "author": "Balachandar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crhbala/expressjs/issues"
+  },
+  "homepage": "https://github.com/crhbala/expressjs#readme"
+}
