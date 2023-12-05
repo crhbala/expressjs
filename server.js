@@ -1,5 +1,5 @@
-// import the library http
-const http = require('http');
+const express = require('express');
+const app = express();
 
 let notes = [
     {
@@ -18,12 +18,9 @@ let notes = [
         important: true
     }
 ];
-
-// create a simple web server
-const app = http.createServer((request, response) => {
-    response.statusCode = 200;
-    response.setHeader('Content-Type', 'application/json');
-    response.end(JSON.stringify(notes));
+//define the endpoint
+app.get('/', (request, response) => {
+    response.send('hello world');
 });
 
 

@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/crhbala/expressjs/issues"
   },
-  "homepage": "https://github.com/crhbala/expressjs#readme"
+  "homepage": "https://github.com/crhbala/expressjs#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
