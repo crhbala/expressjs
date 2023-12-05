@@ -20,7 +20,7 @@ let notes = [
 ];
 //define the endpoint
 app.get('/', (request, response) => {
-    response.send('hello world');
+    response.send('<h1>hello world</h1>');
 });
 
 const HOSTNAME = '127.0.0.1';
