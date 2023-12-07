@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 
+//middleware
+app.use(express.json());
+
 let notes = [
     {
         id: 1,
@@ -42,6 +45,12 @@ app.get('/api/notes/:id', (request, response) => {
     }
     
 });
+
+//endpoint to create a new note
+app.post('/api/notes', (request, response) => {
+    notes = notes.concat(request.body);
+    response.status(201).json({ message: 'note created successfully' });
+})
 
 const HOSTNAME = '127.0.0.1';
 const PORT = 3001;
