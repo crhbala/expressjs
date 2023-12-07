@@ -53,7 +53,7 @@ app.post('/api/notes', (request, response) => {
 })
 
 // endpoint to delete a note identified by id
-app.delete('/api/notes', (request, response) => {
+app.delete('/api/notes/:id', (request, response) => {
     //get the id form the params
     const id = request.params.id;
 
