@@ -1,9 +1,42 @@
 const { log } = require('console');
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose')
 
 // middleware
 app.use(express.json());
+
+// connect to the database
+const url = `mongodb+srv://chrisbala32:Yasm6UxSzqMekVxl@cluster0.uwjztkp.mongodb.net/mongo_nodejs
+`;
+
+console.log('Connecting to DB....');
+mongoose.connect(url)
+    .then(() => {
+        console.log('Connected to mongoDB');
+    })
+    .catch((error) => {
+        console.log('Error connecting to MongoDB', error);
+    });
+
+//define a schema
+const noteSchema = new mongoose.Schema({
+    id: Number,
+    content: String,
+    important: Boolean
+});
+
+
+//create a model
+const Note = mongoose.model('Note', noteSchema, 'notes');
+
+//endpoint to view all notes
+app.get('/api/notes', (request, response) => {
+    Note.find({}, {})
+        .then(notes => {
+            response.status(200).json(notes);
+        })
+});
 
 const HOSTNAME = '127.0.0.1';
 const PORT = 3001;
