@@ -8,22 +8,6 @@ const cors = require('cors')
 app.use(cors());
 app.use(express.json());
 
-// connect to the database
-
-
-
-
-//define a schema
-const noteSchema = new mongoose.Schema({
-    id: Number,
-    content: String,
-    important: Boolean
-});
-
-
-//create a model
-const Note = mongoose.model('Note', noteSchema, 'notes');
-
 //endpoint to view all notes
 app.get('/api/notes', (request, response) => {
     Note.find({}, {})
