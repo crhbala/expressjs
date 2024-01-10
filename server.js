@@ -1,17 +1,17 @@
 const { log } = require('console');
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const config = require('./utils/config')
 
 // middleware
 app.use(express.json());
 
 // connect to the database
-const url = `mongodb+srv://chrisbala32:Yasm6UxSzqMekVxl@cluster0.uwjztkp.mongodb.net/mongo_nodejs
-`;
+
 
 console.log('Connecting to DB....');
-mongoose.connect(url)
+mongoose.connect(config.MONGODB_URI)
     .then(() => {
         console.log('Connected to mongoDB');
     })
@@ -38,11 +38,9 @@ app.get('/api/notes', (request, response) => {
         })
 });
 
-const HOSTNAME = '127.0.0.1';
-const PORT = 3001;
 
 //MAKE THE SERVER TO LISTEN FOR HTTP REQUESTS
 
-app.listen(PORT, () => {
-    console.log(`server running at http://${HOSTNAME}:${PORT}`);
+app.listen(config.PORT, () => {
+    console.log(`server running at http://${config.HOSTNAME}:${config.PORT}`);
 });
