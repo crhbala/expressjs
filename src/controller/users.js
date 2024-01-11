@@ -11,19 +11,17 @@ const getAllUsers = async(req, res) => {
 
 const createUser = async(req, res) => {
     try {
-        // ;
-        // // let body.email })
-        // ;
-        // if (!){
-        //     .status(200).send(]"users created succsessfully"})
-        // } else {
-        //     .status(400).send({`User withbody.email} already exists`})
-        // }
-        const newUser= new UserModel({firstName:req.body.firstName,lastName:req.body.lastName,email:req.body.email })
-        await newUser.save()
-        res.status(200).json({message:"user registered succefully", data:newUser})
+        let user = await UserModel.findOne({ email: req.body.email })
+
+        
+        if (!user){
+            await UserModel.create(req.body)
+            res.status(200).send({message:"users created succsessfully"})
+        } else {
+            res.status(400).send({message:`User with ${req.body.email} already exists`})
+        }
     } catch (error) {
-        res.status(500).send({error:"create userr error"})
+        res.status(500).send({error:error.message})
     }
 }
 
