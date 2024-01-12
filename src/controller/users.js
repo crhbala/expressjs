@@ -25,6 +25,7 @@ const getUserById = async (req, res) => {
 const createUser = async(req, res) => {
     try {
         const { email} = req.body;
+        
         const user = await UserModel.findOne({email})
         
         if (!user)
