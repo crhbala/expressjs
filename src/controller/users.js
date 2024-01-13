@@ -14,7 +14,7 @@ const getAlluser = async(req, res) => {
 const getUserById = async (req, res) => {
     try {
         let { id } = req.params;
-        let user = await UserModel.findById(id)
+        let user = await UserModel.findById({id})
         res.status(200).send({message: "user data fetched",user})
         
     } catch (error) {
@@ -26,7 +26,7 @@ const createUser = async(req, res) => {
     try {
         const { email} = req.body;
         
-        const user = await UserModel.findOne({email})
+        const user = await UserModel.findOne( {email} );
         
         if (!user)
         {
@@ -56,7 +56,7 @@ const createUser = async(req, res) => {
 const editUserById = async (req, res) => {
     try {
         let { id } = req.params;
-        let user = await UserModel.findById(id)
+        let user = await UserModel.findById({ id });
             if (user)
             {
                 user.firstName = req.body.firstName
@@ -79,7 +79,7 @@ const editUserById = async (req, res) => {
 const deleteUserById = async (req, res) => {
     try {
         let { id } = req.params;
-        let user = await UserModel.findById(id)
+        let user = await UserModel.findById({ id });
            if (user)
         {
              await UserModel.deleteOne({_id:id})

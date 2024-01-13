@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     status: { type: Boolean, default: true },
     createdAt: {type: Date, default: Date.now()}
 }, {
-    collation: 'users'
+    collaction: 'users'
 })
 
 const UserModel = mongoose.model('users', userSchema)
