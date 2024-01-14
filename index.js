@@ -11,4 +11,6 @@ app.use(express.json())
 
 app.use('/', AppRoutes)
 
-app.listen(PORT, ()=>console.log(`server listening ${PORT}`))
+app.listen(PORT, () => console.log(`server listening ${PORT}`))
+
+// https://minib-pdtp.onrender.com

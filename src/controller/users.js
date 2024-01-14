@@ -2,7 +2,7 @@ import UserModel from "../models/user.js"
 
 
 const getAlluser = async(req, res) => {
-     try {
+    try {
          let users = await UserModel.find()
          res.status(200).send({message: "user list fetched",users})
     } catch (error) {
@@ -14,7 +14,7 @@ const getAlluser = async(req, res) => {
 const getUserById = async (req, res) => {
     try {
         let { id } = req.params;
-        let user = await UserModel.findById({id})
+        let user = await UserModel.findById(id)
         res.status(200).send({message: "user data fetched",user})
         
     } catch (error) {
@@ -37,15 +37,6 @@ const createUser = async(req, res) => {
         res.status(400).send({message:`user with ${req.body.email} already exists`})
         
         }
-
-        // await UserModel.create(req.body)
-        //     res.status(200).send({message:"user created successfully"})
-
-
-
-        //  const newUser= new UserModel({firstName:req.body.firstName,lastName:req.body.lastName,email:req.body.email })
-        // await newUser.save()
-        // res.status(200).json({message:"user registered succefully", data:newUser})
         
     } catch (error) {
         console.log(error);
@@ -56,7 +47,7 @@ const createUser = async(req, res) => {
 const editUserById = async (req, res) => {
     try {
         let { id } = req.params;
-        let user = await UserModel.findById({ id });
+        let user = await UserModel.findByIdAndUpdate( id );
             if (user)
             {
                 user.firstName = req.body.firstName
@@ -79,10 +70,11 @@ const editUserById = async (req, res) => {
 const deleteUserById = async (req, res) => {
     try {
         let { id } = req.params;
-        let user = await UserModel.findById({ id });
-           if (user)
+        let user = await UserModel.findByIdAndDelete( id );
+        if (user)
+           
         {
-             await UserModel.deleteOne({_id:id})
+             await UserModel.deleteOne({user})
             res.status(200).send({message:"user deleted successfully"})
         }
         else {
